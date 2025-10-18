@@ -39,18 +39,40 @@ const Hero = () => {
         </div>
         
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-6 animate-fade-in">
-          <span className="gradient-text">Purple Nebula</span>
+          <span className="gradient-text">Vanshika Jangam</span>
           <br />
-          <span className="text-foreground">Nexus</span>
+          <span className="text-foreground">Frontend Nebula</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in font-light">
-          Frontend Developer crafting cosmic digital experiences with
-          <span className="text-accent font-medium"> HTML</span>,
-          <span className="text-secondary font-medium"> CSS</span>,
-          <span className="text-primary font-medium"> JavaScript</span>, and
-          <span className="gradient-text font-medium"> React</span>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in font-light">
+          Full-Stack Developer crafting cosmic digital experiences with
+          <span className="text-accent font-medium"> React.js</span>,
+          <span className="text-secondary font-medium"> Next.js</span>,
+          <span className="text-primary font-medium"> Node.js</span>, and
+          <span className="gradient-text font-medium"> MongoDB</span>
         </p>
+
+        <div className="glass-effect rounded-2xl px-6 py-4 mb-12 inline-block animate-fade-in">
+          <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+            <span className="flex items-center gap-2">
+              📍 Ahmedabad, India
+            </span>
+            <span className="flex items-center gap-2">
+              📧 vanshika.jangamcg@gmail.com
+            </span>
+            <span className="flex items-center gap-2">
+              📱 +91 6359338919
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-4 text-sm text-accent mt-2">
+            <a href="https://linkedin.com/in/vanshika-jangam-0a232332a/" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+              LinkedIn
+            </a>
+            <a href="https://triivya.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors">
+              Portfolio
+            </a>
+          </div>
+        </div>
 
         <div className="flex gap-4 justify-center mb-16 animate-fade-in">
           <Button

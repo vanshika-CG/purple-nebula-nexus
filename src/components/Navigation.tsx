@@ -19,7 +19,7 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const navItems = ["about", "projects", "contact"];
+  const navItems = ["about", "projects", "education", "contact"];
 
   return (
     <>

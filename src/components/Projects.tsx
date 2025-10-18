@@ -5,40 +5,36 @@ import { ExternalLink, Github } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "Cosmic Dashboard",
-      description: "A real-time analytics dashboard with dynamic data visualization and gradient UI elements",
-      tags: ["React", "Chart.js", "Tailwind"],
+      title: "Triivya – E-Commerce Clothing Platform",
+      description: "Developed a fully functional paid e-commerce site with secure authentication, product filters, cart, and payment flow. Optimized for responsive design and high performance, improving page load speed by 35%. Delivered the platform to a real client, ensuring scalability and security.",
+      tags: ["Next.js", "MongoDB", "Express.js", "Tailwind CSS"],
       gradient: "from-primary to-secondary",
+      link: "https://triivya.com",
+      demo: "https://triivya.com",
     },
     {
-      title: "Nebula Commerce",
-      description: "E-commerce platform with smooth animations and interactive product galleries",
-      tags: ["Next.js", "Framer Motion", "TypeScript"],
+      title: "CodeChisel – Coding Education Platform",
+      description: "Built an interactive coding platform with real-time code execution and student progress tracking. Designed a clean, responsive UI for an engaging learning experience.",
+      tags: ["React.js", "Tailwind CSS", "Node.js"],
       gradient: "from-secondary to-accent",
+      link: "https://codin-learning.netlify.app",
+      demo: "https://codin-learning.netlify.app",
     },
     {
-      title: "Stellar Docs",
-      description: "Documentation site with search, syntax highlighting, and responsive design",
-      tags: ["React", "MDX", "CSS Grid"],
+      title: "Ideolyze – Idea Refinement Tool",
+      description: "Created a platform to help users visualize and refine startup ideas with a user-friendly interface. Focused on clean UI/UX for better usability.",
+      tags: ["React.js", "Frontend"],
       gradient: "from-accent to-lavender",
+      link: "https://ideolyze.netlify.app",
+      demo: "https://ideolyze.netlify.app",
     },
     {
-      title: "Aurora UI Kit",
-      description: "Component library with gradient-themed, accessible UI components",
-      tags: ["React", "Storybook", "Accessibility"],
+      title: "Multi-Category Content Website",
+      description: "Developed a modular blog-style site covering recipes, cocktails, and general topics. Integrated external APIs for dynamic content fetching.",
+      tags: ["React.js", "API Integration"],
       gradient: "from-primary to-accent",
-    },
-    {
-      title: "Void Portfolio",
-      description: "3D portfolio website with Three.js integration and scroll-based animations",
-      tags: ["Three.js", "GSAP", "WebGL"],
-      gradient: "from-secondary to-primary",
-    },
-    {
-      title: "Quantum Blog",
-      description: "Modern blog platform with markdown support and gradient typography",
-      tags: ["Next.js", "MDX", "Vercel"],
-      gradient: "from-accent to-secondary",
+      link: "https://multi-category.netlify.app",
+      demo: "https://multi-category.netlify.app",
     },
   ];
 
@@ -85,6 +81,7 @@ const Projects = () => {
                     size="sm"
                     variant="outline"
                     className="flex-1 border-accent/50 hover:bg-accent/10"
+                    onClick={() => window.open(project.demo, '_blank')}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Demo
@@ -93,9 +90,10 @@ const Projects = () => {
                     size="sm"
                     variant="outline"
                     className="flex-1 border-accent/50 hover:bg-accent/10"
+                    onClick={() => window.open(project.link, '_blank')}
                   >
                     <Github className="w-4 h-4 mr-2" />
-                    Code
+                    View
                   </Button>
                 </div>
               </div>

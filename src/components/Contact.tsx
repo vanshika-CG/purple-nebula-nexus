@@ -23,10 +23,10 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, label: "GitHub", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Mail, label: "Email", href: "mailto:hello@example.com" },
+    { icon: Github, label: "GitHub", href: "https://github.com/vanshikajangam" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/vanshika-jangam-0a232332a/" },
+    { icon: Twitter, label: "Portfolio", href: "https://triivya.com" },
+    { icon: Mail, label: "Email", href: "mailto:vanshika.jangamcg@gmail.com" },
   ];
 
   return (
