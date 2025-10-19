@@ -1,45 +1,68 @@
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award } from 'lucide-react';
+// 1. Import the LightRays component (assuming LightRays.tsx is in the same directory or a common components folder)
+import LightRays from './LightRays'; // Adjust path as necessary
 
 const Education = () => {
   const education = [
     {
-      degree: "B.Tech in Computer Science & Engineering",
-      institution: "Rai University",
-      period: "2024–2028",
+      degree: 'B.Tech in Computer Science & Engineering',
+      institution: 'Rai University',
+      period: '2024–2028',
       icon: GraduationCap,
     },
     {
-      degree: "High School",
-      institution: "LP Savani International School",
-      period: "2022–2023",
+      degree: 'High School',
+      institution: 'LP Savani International School',
+      period: '2022–2023',
       icon: GraduationCap,
     },
   ];
 
   const certifications = [
     {
-      name: "Microsoft Certified: Azure Fundamentals",
-      code: "AZ-900",
-      issuer: "Microsoft",
+      name: 'Microsoft Certified: Azure Fundamentals',
+      code: 'AZ-900',
+      issuer: 'Microsoft',
     },
     {
-      name: "JavaScript (Basics)",
-      issuer: "HackerRank",
+      name: 'JavaScript (Basics)',
+      issuer: 'HackerRank',
     },
     {
-      name: "React (Basics)",
-      issuer: "HackerRank",
+      name: 'React (Basics)',
+      issuer: 'HackerRank',
     },
   ];
 
   return (
-    <section id="education" className="py-24 px-4 relative">
-      <div className="absolute inset-0 gradient-nebula-radial opacity-20"></div>
+    // The section now serves as the container for the light rays, it must be 'relative'
+    <section id="education" className="py-24 px-4 relative min-h-[800px] overflow-hidden"> 
       
+      {/* 4. Place the LightRays component as the background. */}
+      {/* It uses absolute positioning to fill the container and a low z-index to stay behind content. */}
+      {/* 5. Configure props for a subtle, mouse-following background effect. */}
+      <div className="absolute inset-0 z-0">
+        <LightRays 
+          raysOrigin="top-center"
+          raysColor="#8be9fd" // A light blue/cyan color for a tech/nebula feel
+          raysSpeed={0.5} 
+          lightSpread={0.8} 
+          rayLength={3.0}
+          pulsating={true}
+          fadeDistance={0.5}
+          saturation={1.0}
+          followMouse={true} // Enable mouse following
+          mouseInfluence={0.05} // Subtle influence for a highlight feel
+          noiseAmount={0.05} // Small amount of noise for texture
+          className="opacity-100" // Control overall visibility/intensity with opacity
+        />
+      </div>
+      
+      {/* The main content div needs a higher z-index to sit above the light rays */}
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Nebula <span className="gradient-text">Archives</span>
+            <span className="gradient-text">Archives</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Educational journey and professional certifications
@@ -47,6 +70,7 @@ const Education = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Education Block */}
           <div>
             <h3 className="text-2xl font-heading font-semibold mb-6 flex items-center gap-2">
               <GraduationCap className="w-6 h-6 text-accent" />
@@ -73,6 +97,7 @@ const Education = () => {
             </div>
           </div>
 
+          {/* Certifications Block */}
           <div>
             <h3 className="text-2xl font-heading font-semibold mb-6 flex items-center gap-2">
               <Award className="w-6 h-6 text-accent" />

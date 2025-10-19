@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import GlareHover from './GlareHover'; // Adjust path based on your project structure
 
 const Hero = () => {
   return (
@@ -37,20 +38,58 @@ const Hero = () => {
           Discover a passionate and dedicated UI/UX developer, driven by the vision of crafting impactful and user-centric experiences.
         </p>
         <div className="flex gap-4">
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-            Let's Connect
-          </Button>
-          <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-900">
-            Download CV
-          </Button>
+          <GlareHover
+            width="auto"
+            height="auto"
+            background="transparent"
+            borderRadius="8px"
+            borderColor="transparent"
+            glareColor="#ffffff"
+            glareOpacity={0.3}
+            glareSize={200}
+            transitionDuration={500}
+            className="inline-flex"
+          >
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+              Let's Connect
+            </Button>
+          </GlareHover>
+          <GlareHover
+            width="auto"
+            height="auto"
+            background="transparent"
+            borderRadius="8px"
+            borderColor="transparent"
+            glareColor="#ffffff"
+            glareOpacity={0.3}
+            glareSize={200}
+            transitionDuration={500}
+            className="inline-flex"
+          >
+            <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-900">
+              Download CV
+            </Button>
+          </GlareHover>
         </div>
       </div>
 
       {/* Navigation */}
-     
-      <a href="#contact" className="absolute bottom-10 right-10 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
-        Get in Touch
-      </a>
+      <GlareHover
+        width="auto"
+        height="auto"
+        background="transparent"
+        borderRadius="8px"
+        borderColor="transparent"
+        glareColor="#ffffff"
+        glareOpacity={0.3}
+        glareSize={200}
+        transitionDuration={500}
+        className="inline-flex"
+      >
+        <a href="#contact" className="absolute bottom-10 right-10 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+          Get in Touch
+        </a>
+      </GlareHover>
     </section>
   );
 };
