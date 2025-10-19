@@ -5,28 +5,13 @@ import GlareHover from './GlareHover'; // Adjust path based on your project stru
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-start bg-gradient-to-b from-black via-purple-900 to-black text-white overflow-hidden">
+      
       {/* Bitmoji-like character */}
+      {/* NOTE: You will need to ensure a file named /bitmoji.png exists in your public assets */}
       <div className="absolute right-20 top-1/3 transform -translate-y-1/4">
         <img src="/bitmoji.png" alt="Bitmoji" className="w-96 h-auto" />
       </div>
       
-      {/* Background particles */}
-      <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute bg-purple-400 rounded-full opacity-30 animate-pulse"
-            style={{
-              width: `${Math.random() * 10 + 5}px`,
-              height: `${Math.random() * 10 + 5}px`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          />
-        ))}
-      </div>
-
       {/* Content */}
       <div className="relative z-10 text-left px-4 max-w-3xl ml-10">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
@@ -35,7 +20,7 @@ const Hero = () => {
           <span className="text-purple-300">I Transform Ideas into Engaging Experiences</span>
         </h1>
         <p className="text-lg md:text-xl mb-6 text-gray-300">
-          Discover a passionate and dedicated UI/UX developer, driven by the vision of crafting impactful and user-centric experiences.
+          Discover a passionate and dedicated **UI/UX developer**, driven by the vision of crafting impactful and user-centric experiences.
         </p>
         <div className="flex gap-4">
           <GlareHover
