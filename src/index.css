@@ -49,8 +49,8 @@ All colors MUST be HSL.
     --gradient-end: 282 45% 88%;
     
     /* Glow effects */
-    --glow-primary: 276 71% 33%;
-    --glow-secondary: 291 47% 51%;
+    --glow-primary: 276 71% 33%; /* Deep Purple */
+    --glow-secondary: 291 47% 51%; /* Magenta/Pink */
   }
 }
 
@@ -93,10 +93,34 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  
+  /* --- NEW: Rocket Style Indicator Glow --- */
+  .nav-indicator-glow {
+    position: absolute;
+    /* Adjusted bottom position to align under the text links */
+    bottom: -6px; 
+    height: 3px;
+    
+    /* Using a gradient to create a central light source on the bar */
+    background: linear-gradient(90deg, 
+      hsl(var(--glow-primary) / 0.1) 0%,
+      hsl(var(--glow-secondary)) 25%, 
+      hsl(var(--lavender)) 50%, 
+      hsl(var(--glow-secondary)) 75%,
+      hsl(var(--glow-primary) / 0.1) 100%);
+
+    /* The glowing effect */
+    box-shadow: 0 0 10px hsl(var(--glow-secondary) / 0.8),
+                0 0 20px hsl(var(--glow-secondary) / 0.4);
+                
+    /* Transition applied directly to the element for smooth movement */
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 9999px;
+  }
 
   .glow-effect {
     box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3),
-                0 0 40px hsl(var(--glow-secondary) / 0.2);
+      0 0 40px hsl(var(--glow-secondary) / 0.2);
   }
 
   .glass-effect {
