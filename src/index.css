@@ -170,6 +170,7 @@ All colors MUST be HSL.
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
+  
 }
 
 @layer base {
