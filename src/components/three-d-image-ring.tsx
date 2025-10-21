@@ -1,10 +1,9 @@
-// components/three-d-image-ring.tsx
-
 "use client";
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence, useMotionValue, easeOut } from "framer-motion";
 import { cn } from "../lib/utils";
 import { animate } from "framer-motion";
+import { Hand } from "lucide-react"; // Added Hand icon import
 
 export interface ThreeDImageRingProps {
   /** Array of image URLs to display in the ring */
@@ -42,7 +41,7 @@ export interface ThreeDImageRingProps {
   /** Callback function when the active image changes (index) */
   onActiveImageChange: (index: number) => void; 
   /** Aspect ratio of individual images (e.g., 16/9 for widescreen, 4/3 for standard) */
-  imageAspectRatio?: number; // <--- NEW PROP
+  imageAspectRatio?: number;
 }
 
 export function ThreeDImageRing({
@@ -65,7 +64,7 @@ export function ThreeDImageRing({
   mobileBreakpoint = 768,
   mobileScaleFactor = 0.8,
   onActiveImageChange,
-  imageAspectRatio = 16 / 9, // <--- DEFAULT TO COMMON WIDESCREEN RATIO
+  imageAspectRatio = 16 / 9,
 }: ThreeDImageRingProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
@@ -81,8 +80,7 @@ export function ThreeDImageRing({
   const [activeIndex, setActiveIndex] = useState(0); 
 
   // Calculate image height based on width and aspect ratio
-  const imageHeight = useMemo(() => width / imageAspectRatio, [width, imageAspectRatio]); // <--- CALC IMAGE HEIGHT
-
+  const imageHeight = useMemo(() => width / imageAspectRatio, [width, imageAspectRatio]);
 
   const getBgPos = (imageIndex: number, currentRot: number, scale: number) => {
     const scaledImageDistance = imageDistance * scale;
@@ -119,8 +117,8 @@ export function ThreeDImageRing({
 
       const newIndex = calculateActiveIndex(latestRotation);
       if (newIndex !== activeIndex) {
-          setActiveIndex(newIndex);
-          onActiveImageChange(newIndex);
+        setActiveIndex(newIndex);
+        onActiveImageChange(newIndex);
       }
     });
 
@@ -197,7 +195,7 @@ export function ThreeDImageRing({
         rotationY.set(latest);
       },
       onComplete: () => {
-          onActiveImageChange(calculateActiveIndex(rotationY.get()));
+        onActiveImageChange(calculateActiveIndex(rotationY.get()));
       }
     });
     velocity.current = 0;
@@ -223,12 +221,11 @@ export function ThreeDImageRing({
       onMouseDown={draggable ? handleDragStart : undefined}
       onTouchStart={draggable ? handleDragStart : undefined}
     >
-      <div // This is the stage that contains the ring
+      <div
         style={{
           perspective: `${perspective}px`,
           width: `${width}px`,
-          // Adjust overall stage height based on image height
-          height: `${imageHeight * 1.33}px`, // Adjusted for new image height
+          height: `${imageHeight * 1.33}px`,
           position: "absolute",
           left: "50%",
           top: "50%",
@@ -252,21 +249,21 @@ export function ThreeDImageRing({
               <motion.div
                 key={index}
                 className={cn(
-                  "absolute transition-shadow duration-300", // Removed w-full h-full from here
+                  "absolute transition-shadow duration-300",
                   index === activeIndex ? "ring-4 ring-accent/70 shadow-2xl shadow-accent/50" : "",
                   imageClassName
                 )}
                 style={{
-                  width: `${width}px`, // Explicitly set width
-                  height: `${imageHeight}px`, // <--- EXPLICITLY SET HEIGHT
+                  width: `${width}px`,
+                  height: `${imageHeight}px`,
                   transformStyle: "preserve-3d",
                   backgroundImage: `url(${imageUrl})`,
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backfaceVisibility: "hidden",
-                  rotateY: index * angle, 
+                  rotateY: index * angle,
                   z: -imageDistance * currentScale,
-                  transformOrigin: `50% 50% ${imageDistance * currentScale}px`, 
+                  transformOrigin: `50% 50% ${imageDistance * currentScale}px`,
                   backgroundPosition: getBgPos(index, rotationY.get(), currentScale),
                 }}
                 initial="hidden"
@@ -302,6 +299,14 @@ export function ThreeDImageRing({
             ))}
           </AnimatePresence>
         </motion.div>
+      </div>
+      {/* Added Hand Icon and Drag Instruction */}
+      <div
+        className="absolute left-1/2 transform -translate-x-1/2 bottom-4 flex items-center gap-2 text-muted-foreground text-sm"
+        style={{ top: `${imageHeight * 1.33 + 20}px` }} // Position below the ring
+      >
+        <Hand className="w-5 h-5" />
+        <span>Drag to rotate</span>
       </div>
     </div>
   );
