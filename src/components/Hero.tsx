@@ -1,27 +1,49 @@
-import React from 'react';
+// src/components/Hero.tsx
+import React from "react";
 import { Button } from "@/components/ui/button";
-import GlareHover from './GlareHover'; // Adjust path based on your project structure
+import GlareHover from "./GlareHover"; // keep your path
+import { useLenis } from "@/hooks/useLenis";
 
 const Hero = () => {
+  const lenis = useLenis();
+
+  const scrollToContact = () => {
+    lenis?.scrollTo("#contact", { offset: -120, duration: 1.2 });
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-start bg-gradient-to-b from-black via-purple-900 to-black text-white overflow-hidden">
-      
-      {/* Bitmoji-like character */}
-      {/* NOTE: You will need to ensure a file named /bitmoji.png exists in your public assets */}
-      <div className="absolute right-20 top-1/3 transform -translate-y-1/4">
-        <img src="/bitmoji.png" alt="Bitmoji" className="w-96 h-auto" />
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-start overflow-hidden
+                 bg-gradient-to-b
+                 from-background/90   /* top – dark background */
+                 via-primary/30       /* middle – primary tint */
+                 to-background/90"    /* bottom – dark again */
+    >
+      {/* ---------------------------------------------------------- */}
+      {/* Bitmoji (right side) */}
+      {/* ---------------------------------------------------------- */}
+      <div className="absolute right-20 top-1/3 -translate-y-1/4">
+        <img src="/bitmoji.png" alt="Bitmoji" className="w-96 h-auto drop-shadow-2xl" />
       </div>
-      
-      {/* Content */}
-      <div className="relative z-10 text-left px-4 max-w-3xl ml-10">
+
+      {/* ---------------------------------------------------------- */}
+      {/* Main Content (left side) */}
+      {/* ---------------------------------------------------------- */}
+      <div className="relative z-10 max-w-3xl px-4 ml-10 text-left">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          <span className="text-white">Hi, I'm Vanshika Jangam!</span>
-          <br />
-          <span className="text-purple-300">I Transform Ideas into Engaging Experiences</span>
+          <span className="block text-foreground">Hi, I'm Vanshika Jangam!</span>
+          <span className="block text-lavender">
+            I Transform Ideas into Engaging Experiences
+          </span>
         </h1>
-        <p className="text-lg md:text-xl mb-6 text-gray-300">
-          Discover a passionate and dedicated **UI/UX developer**, driven by the vision of crafting impactful and user-centric experiences.
+
+        <p className="text-lg md:text-xl mb-6 text-muted-foreground">
+          Discover a passionate and dedicated **UI/UX developer**, driven by the
+          vision of crafting impactful and user-centric experiences.
         </p>
+
+        {/* CTA Buttons – wrapped in GlareHover */}
         <div className="flex gap-4">
           <GlareHover
             width="auto"
@@ -35,10 +57,14 @@ const Hero = () => {
             transitionDuration={500}
             className="inline-flex"
           >
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+            <Button
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+              onClick={scrollToContact}
+            >
               Let's Connect
             </Button>
           </GlareHover>
+
           <GlareHover
             width="auto"
             height="auto"
@@ -51,14 +77,19 @@ const Hero = () => {
             transitionDuration={500}
             className="inline-flex"
           >
-            <Button variant="outline" className="border-purple-600 text-purple-300 hover:bg-purple-900">
+            <Button
+              variant="outline"
+              className="border-lavender text-lavender hover:bg-lavender/10 font-semibold"
+            >
               Download CV
             </Button>
           </GlareHover>
         </div>
       </div>
 
-      {/* Navigation */}
+      {/* ---------------------------------------------------------- */}
+      {/* Bottom-right “Get in Touch” link */}
+      {/* ---------------------------------------------------------- */}
       <GlareHover
         width="auto"
         height="auto"
@@ -71,7 +102,18 @@ const Hero = () => {
         transitionDuration={500}
         className="inline-flex"
       >
-        <a href="#contact" className="absolute bottom-10 right-10 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+        <a
+          href="#contact"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToContact();
+          }}
+          className="absolute bottom-10 right-10
+                     bg-primary text-primary-foreground
+                     px-5 py-2.5 rounded-lg
+                     hover:bg-primary/90
+                     font-medium transition-colors"
+        >
           Get in Touch
         </a>
       </GlareHover>
