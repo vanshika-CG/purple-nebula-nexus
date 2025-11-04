@@ -8,23 +8,33 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
-// ❌ REMOVE THE useLenis IMPORT
-// import { useLenis } from "@/hooks/useLenis"; 
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import AnimatedSection from "@/components/AnimatedSection";
 
 const Index = () => {
-  // ❌ REMOVE THE useLenis CALL - Lenis is initialized via the provider
-  // useLenis(); 
-
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgressBar />
       <CustomCursor />
       <Navigation />
-      <Hero />
-      <About />
-      <Projects />
-      <Education />
-      <Contact />
-      <Footer />
+      <AnimatedSection animation="fadeInUp" threshold={0.15}>
+        <Hero />
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInScale" threshold={0.15}>
+        <About />
+      </AnimatedSection>
+      <AnimatedSection animation="slideInRight" threshold={0.15}>
+        <Projects />
+      </AnimatedSection>
+      <AnimatedSection animation="slideInLeft" threshold={0.15}>
+        <Education />
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInUp" threshold={0.15}>
+        <Contact />
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInUp" threshold={0.1}>
+        <Footer />
+      </AnimatedSection>
     </div>
   );
 };
